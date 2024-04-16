@@ -1,0 +1,59 @@
+[gd_scene load_steps=4 format=3 uid="uid://dr4klcaqlnimh"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_1m8er"]
+[ext_resource type="Script" path="res://money_counter.gd" id="1_2ngtt"]
+
+[sub_resource type="GDScript" id="GDScript_pekp5"]
+script/source = "extends Button
+
+@onready var label = $Label
+
+func _ready():
+	pass 
+
+
+
+func _process(delta):
+	pass
+
+
+
+func _on_pressed():
+	var random_generator = RandomNumberGenerator.new()
+	var random_number = random_generator.randi_range(1, 10)
+	label.text = str(random_number)
+"
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_1m8er")
+
+[node name="money_counter" type="Label" parent="."]
+modulate = Color(0.2, 0.709804, 0.176471, 1)
+offset_left = 58.0
+offset_top = 22.0
+offset_right = 397.0
+offset_bottom = 131.0
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("1_2ngtt")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 832.0
+offset_top = 64.0
+offset_right = 1089.0
+offset_bottom = 144.0
+text = "Cats
+Risk: Low
+Min Invest Amount: 250$"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="lowrisk_stock" type="Button" parent="Label"]
+offset_top = 80.0
+offset_right = 256.0
+offset_bottom = 111.0
+text = "Buy"
+script = SubResource("GDScript_pekp5")
+
+[connection signal="pressed" from="Label/lowrisk_stock" to="." method="_on_lowrisk_stock_pressed"]
