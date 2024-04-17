@@ -19,6 +19,8 @@ func _on_turn_counter_focus_entered():
 	
 	self.text = "Final Amount: " + str(money_amount)
 
+# Add a retry button!!
+
 
 func _on_lowrisk_stock_pressed():
 	var random_generator = RandomNumberGenerator.new()
@@ -37,7 +39,7 @@ func _on_medium_stock_pressed():
 	
 	
 	if random_number == 1:
-		money_amount += 1100
+		money_amount += 1200
 
 
 func _on_high_stock_pressed():
@@ -48,3 +50,5 @@ func _on_high_stock_pressed():
 	
 	if random_number >= 9:
 		money_amount += 8000
+		
+
