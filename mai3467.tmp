@@ -1,0 +1,125 @@
+[gd_scene load_steps=7 format=3 uid="uid://dr4klcaqlnimh"]
+
+[ext_resource type="Script" path="res://cats_stock.gd" id="1_1m8er"]
+[ext_resource type="Script" path="res://money_counter.gd" id="1_2ngtt"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6ehf2"]
+font_size = 45
+
+[sub_resource type="LabelSettings" id="LabelSettings_dpfje"]
+line_spacing = 15.0
+shadow_color = Color(0, 0, 0, 0.439216)
+shadow_offset = Vector2(1, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_qdsca"]
+outline_size = 2
+
+[sub_resource type="GDScript" id="GDScript_pekp5"]
+script/source = "extends Button
+
+@onready var label = $Label
+
+func _ready():
+	pass 
+
+
+
+func _process(delta):
+	pass
+
+
+
+func _on_pressed():
+	var random_generator = RandomNumberGenerator.new()
+	var random_number = random_generator.randi_range(1, 10)
+	label.text = str(random_number)
+"
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_1m8er")
+
+[node name="money_counter" type="Label" parent="."]
+self_modulate = Color(0.121569, 0.686275, 0, 1)
+offset_right = 339.0
+offset_bottom = 109.0
+text = "1000 $"
+label_settings = SubResource("LabelSettings_6ehf2")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("1_2ngtt")
+
+[node name="not_money" type="Label" parent="money_counter"]
+self_modulate = Color(0.984314, 0, 0, 1)
+offset_left = 64.0
+offset_top = 128.0
+offset_right = 256.0
+offset_bottom = 192.0
+text = "Not Enough Money"
+label_settings = SubResource("LabelSettings_dpfje")
+horizontal_alignment = 1
+
+[node name="kattepus" type="Label" parent="."]
+offset_left = 1600.0
+offset_top = 64.0
+offset_right = 1857.0
+offset_bottom = 160.0
+text = "Cats
+Risk: Low
+Min Invest Amount: 250$"
+label_settings = SubResource("LabelSettings_qdsca")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="lowrisk_stock" type="Button" parent="kattepus"]
+layout_mode = 0
+offset_top = 96.0
+offset_right = 256.0
+offset_bottom = 127.0
+text = "Buy"
+script = SubResource("GDScript_pekp5")
+
+[node name="bakkemo" type="Label" parent="."]
+offset_left = 1600.0
+offset_top = 448.0
+offset_right = 1857.0
+offset_bottom = 544.0
+text = "Bakkevestor
+Risk: High
+Min Invest Amount: 1000$"
+label_settings = SubResource("LabelSettings_qdsca")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="lowrisk_stock" type="Button" parent="bakkemo"]
+layout_mode = 0
+offset_top = 96.0
+offset_right = 256.0
+offset_bottom = 127.0
+text = "Buy"
+
+[node name="kattepus2" type="Label" parent="."]
+offset_left = 1600.0
+offset_top = 256.0
+offset_right = 1857.0
+offset_bottom = 352.0
+text = "phillfans AS
+Risk: Medium
+Min Invest Amount: 500$"
+label_settings = SubResource("LabelSettings_qdsca")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="lowrisk_stock" type="Button" parent="kattepus2"]
+layout_mode = 0
+offset_top = 96.0
+offset_right = 256.0
+offset_bottom = 127.0
+text = "Buy"
+
+[connection signal="pressed" from="kattepus/lowrisk_stock" to="." method="_on_lowrisk_stock_pressed"]
+[connection signal="pressed" from="kattepus/lowrisk_stock" to="money_counter" method="_on_lowrisk_stock_pressed"]
+[connection signal="pressed" from="bakkemo/lowrisk_stock" to="." method="_on_lowrisk_stock_pressed"]
+[connection signal="pressed" from="kattepus2/lowrisk_stock" to="." method="_on_lowrisk_stock_pressed"]

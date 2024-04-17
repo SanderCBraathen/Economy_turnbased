@@ -1,5 +1,7 @@
 extends Node2D
 
+signal money_amount(value) 
+
 @onready var label = $Label
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -15,5 +17,5 @@ func _process(delta):
 
 func _on_lowrisk_stock_pressed():
 	var random_generator = RandomNumberGenerator.new()
-	var random_number = random_generator.randi_range(1, 10)
-	label.text = str(random_number)
+	var random_number = random_generator.randi_range(1, 2)
+

@@ -1,59 +1,120 @@
-[gd_scene load_steps=4 format=3 uid="uid://dr4klcaqlnimh"]
+[gd_scene load_steps=8 format=3 uid="uid://dr4klcaqlnimh"]
 
-[ext_resource type="Script" path="res://main.gd" id="1_1m8er"]
+[ext_resource type="Script" path="res://cats_stock.gd" id="1_1m8er"]
 [ext_resource type="Script" path="res://money_counter.gd" id="1_2ngtt"]
+[ext_resource type="Script" path="res://turn_counter.gd" id="3_ja5fa"]
+[ext_resource type="Script" path="res://stocks.gd" id="4_81og0"]
 
-[sub_resource type="GDScript" id="GDScript_pekp5"]
-script/source = "extends Button
+[sub_resource type="LabelSettings" id="LabelSettings_6ehf2"]
+font_size = 45
 
-@onready var label = $Label
+[sub_resource type="LabelSettings" id="LabelSettings_dpfje"]
+line_spacing = 25.0
+outline_size = 2
+shadow_color = Color(0, 0, 0, 0.439216)
+shadow_offset = Vector2(1, 2)
 
-func _ready():
-	pass 
-
-
-
-func _process(delta):
-	pass
-
-
-
-func _on_pressed():
-	var random_generator = RandomNumberGenerator.new()
-	var random_number = random_generator.randi_range(1, 10)
-	label.text = str(random_number)
-"
+[sub_resource type="LabelSettings" id="LabelSettings_qdsca"]
+outline_size = 2
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_1m8er")
 
 [node name="money_counter" type="Label" parent="."]
-modulate = Color(0.2, 0.709804, 0.176471, 1)
-offset_left = 58.0
-offset_top = 22.0
-offset_right = 397.0
-offset_bottom = 131.0
+self_modulate = Color(0.121569, 0.686275, 0, 1)
+offset_top = 16.0
+offset_right = 339.0
+offset_bottom = 125.0
+text = "1000 $"
+label_settings = SubResource("LabelSettings_6ehf2")
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("1_2ngtt")
 
-[node name="Label" type="Label" parent="."]
-offset_left = 832.0
+[node name="turn_counter" type="Label" parent="."]
+self_modulate = Color(0.0117647, 0.627451, 0.984314, 1)
+offset_left = 64.0
+offset_top = 128.0
+offset_right = 256.0
+offset_bottom = 192.0
+text = "Turns Left: "
+label_settings = SubResource("LabelSettings_dpfje")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_ja5fa")
+
+[node name="cats" type="Label" parent="."]
+offset_left = 1600.0
 offset_top = 64.0
-offset_right = 1089.0
-offset_bottom = 144.0
+offset_right = 1857.0
+offset_bottom = 160.0
 text = "Cats
-Risk: Low
+Success rate: 90%
 Min Invest Amount: 250$"
+label_settings = SubResource("LabelSettings_qdsca")
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="lowrisk_stock" type="Button" parent="Label"]
-offset_top = 80.0
+[node name="lowrisk_stock" type="Button" parent="cats"]
+layout_mode = 0
+offset_top = 96.0
 offset_right = 256.0
-offset_bottom = 111.0
+offset_bottom = 127.0
 text = "Buy"
-script = SubResource("GDScript_pekp5")
+script = ExtResource("4_81og0")
 
-[connection signal="pressed" from="Label/lowrisk_stock" to="." method="_on_lowrisk_stock_pressed"]
+[node name="phillfans_as" type="Label" parent="."]
+offset_left = 1600.0
+offset_top = 256.0
+offset_right = 1857.0
+offset_bottom = 352.0
+text = "phillfans AS
+Success rate: 50%
+Min Invest Amount: 500$"
+label_settings = SubResource("LabelSettings_qdsca")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="medium_stock" type="Button" parent="phillfans_as"]
+layout_mode = 0
+offset_top = 96.0
+offset_right = 256.0
+offset_bottom = 127.0
+text = "Buy"
+script = ExtResource("4_81og0")
+
+[node name="bakkevestor" type="Label" parent="phillfans_as"]
+offset_top = 192.0
+offset_right = 257.0
+offset_bottom = 288.0
+text = "Bakkevestor
+Success rate: 10%
+Min Invest Amount: 1000$"
+label_settings = SubResource("LabelSettings_qdsca")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="high_stock" type="Button" parent="phillfans_as/bakkevestor"]
+layout_mode = 0
+offset_top = 96.0
+offset_right = 256.0
+offset_bottom = 127.0
+text = "Buy"
+script = ExtResource("4_81og0")
+
+[connection signal="focus_entered" from="turn_counter" to="money_counter" method="_on_turn_counter_focus_entered"]
+[connection signal="focus_entered" from="turn_counter" to="cats/lowrisk_stock" method="_on_turn_counter_focus_entered"]
+[connection signal="focus_entered" from="turn_counter" to="phillfans_as/bakkevestor/high_stock" method="_on_turn_counter_focus_entered"]
+[connection signal="focus_entered" from="turn_counter" to="phillfans_as/medium_stock" method="_on_turn_counter_focus_entered"]
+[connection signal="pressed" from="cats/lowrisk_stock" to="." method="_on_lowrisk_stock_pressed"]
+[connection signal="pressed" from="cats/lowrisk_stock" to="money_counter" method="_on_lowrisk_stock_pressed"]
+[connection signal="pressed" from="cats/lowrisk_stock" to="turn_counter" method="_on_lowrisk_stock_pressed"]
+[connection signal="pressed" from="phillfans_as/medium_stock" to="." method="_on_lowrisk_stock_pressed"]
+[connection signal="pressed" from="phillfans_as/medium_stock" to="money_counter" method="_on_medium_stock_pressed"]
+[connection signal="pressed" from="phillfans_as/medium_stock" to="turn_counter" method="_on_medium_stock_pressed"]
+[connection signal="pressed" from="phillfans_as/bakkevestor/high_stock" to="." method="_on_lowrisk_stock_pressed"]
+[connection signal="pressed" from="phillfans_as/bakkevestor/high_stock" to="money_counter" method="_on_high_stock_pressed"]
+[connection signal="pressed" from="phillfans_as/bakkevestor/high_stock" to="turn_counter" method="_on_high_stock_pressed"]
