@@ -36,7 +36,6 @@ vertical_alignment = 1
 script = ExtResource("1_2ngtt")
 
 [node name="profit" type="Label" parent="money_counter"]
-layout_mode = 0
 offset_left = 160.0
 offset_right = 496.0
 offset_bottom = 39.0
@@ -122,13 +121,13 @@ script = ExtResource("4_81og0")
 [connection signal="focus_entered" from="turn_counter" to="StellarEdge_Equities/TitanForge_Investments/high_stock" method="_on_turn_counter_focus_entered"]
 [connection signal="pressed" from="Quantum_Ventures_Inc_/lowrisk_stock" to="." method="_on_lowrisk_stock_pressed"]
 [connection signal="pressed" from="Quantum_Ventures_Inc_/lowrisk_stock" to="money_counter" method="_on_lowrisk_stock_pressed"]
-[connection signal="pressed" from="Quantum_Ventures_Inc_/lowrisk_stock" to="money_counter/profit" method="_on_lowrisk_stock_pressed"]
 [connection signal="pressed" from="Quantum_Ventures_Inc_/lowrisk_stock" to="turn_counter" method="_on_lowrisk_stock_pressed"]
+[connection signal="pressed" from="Quantum_Ventures_Inc_/lowrisk_stock" to="money_counter/profit" method="_on_lowrisk_stock_pressed"]
 [connection signal="pressed" from="StellarEdge_Equities/medium_stock" to="." method="_on_lowrisk_stock_pressed"]
 [connection signal="pressed" from="StellarEdge_Equities/medium_stock" to="money_counter" method="_on_medium_stock_pressed"]
-[connection signal="pressed" from="StellarEdge_Equities/medium_stock" to="money_counter/profit" method="_on_medium_stock_pressed"]
 [connection signal="pressed" from="StellarEdge_Equities/medium_stock" to="turn_counter" method="_on_medium_stock_pressed"]
+[connection signal="pressed" from="StellarEdge_Equities/medium_stock" to="money_counter/profit" method="_on_medium_stock_pressed"]
 [connection signal="pressed" from="StellarEdge_Equities/TitanForge_Investments/high_stock" to="." method="_on_lowrisk_stock_pressed"]
 [connection signal="pressed" from="StellarEdge_Equities/TitanForge_Investments/high_stock" to="money_counter" method="_on_high_stock_pressed"]
-[connection signal="pressed" from="StellarEdge_Equities/TitanForge_Investments/high_stock" to="money_counter/profit" method="_on_high_stock_pressed"]
 [connection signal="pressed" from="StellarEdge_Equities/TitanForge_Investments/high_stock" to="turn_counter" method="_on_high_stock_pressed"]
+[connection signal="pressed" from="StellarEdge_Equities/TitanForge_Investments/high_stock" to="money_counter/profit" method="_on_high_stock_pressed"]

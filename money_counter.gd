@@ -10,11 +10,11 @@ func _process(delta):
 	self.text = str(money_amount) + " $"
 
 
-func _on_turn_counter_focus_entered():
-	if not money_moved:
-		var new_position = self.position + Vector2(750, 450)
-		self.position = new_position
-		money_moved = true
+#func _on_turn_counter_focus_entered():
+	#if not money_moved:
+		#var new_position = self.position + Vector2(750, 450)
+		#self.position = new_position
+		#money_moved = true
 	
 	
 	self.text = "Final Amount: " + str(money_amount)

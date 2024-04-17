@@ -1,15 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://dr4klcaqlnimh"]
+[gd_scene load_steps=8 format=3 uid="uid://dr4klcaqlnimh"]
 
 [ext_resource type="Script" path="res://cats_stock.gd" id="1_1m8er"]
 [ext_resource type="Script" path="res://money_counter.gd" id="1_2ngtt"]
 [ext_resource type="Script" path="res://turn_counter.gd" id="3_ja5fa"]
-[ext_resource type="Script" path="res://profit.gd" id="3_llb0h"]
 [ext_resource type="Script" path="res://stocks.gd" id="4_81og0"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_6ehf2"]
-font_size = 100
-
-[sub_resource type="LabelSettings" id="LabelSettings_nhrwl"]
+font_size = 45
 
 [sub_resource type="LabelSettings" id="LabelSettings_dpfje"]
 line_spacing = 25.0
@@ -25,31 +22,21 @@ script = ExtResource("1_1m8er")
 
 [node name="money_counter" type="Label" parent="."]
 self_modulate = Color(0.121569, 0.686275, 0, 1)
-offset_left = -8.0
-offset_top = 792.0
-offset_right = 696.0
-offset_bottom = 960.0
+offset_top = 16.0
+offset_right = 339.0
+offset_bottom = 125.0
 text = "1000 $"
 label_settings = SubResource("LabelSettings_6ehf2")
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("1_2ngtt")
 
-[node name="profit" type="Label" parent="money_counter"]
-layout_mode = 0
-offset_left = 160.0
-offset_right = 496.0
-offset_bottom = 39.0
-label_settings = SubResource("LabelSettings_nhrwl")
-horizontal_alignment = 1
-vertical_alignment = 2
-script = ExtResource("3_llb0h")
-
 [node name="turn_counter" type="Label" parent="."]
 self_modulate = Color(0.0117647, 0.627451, 0.984314, 1)
-offset_top = 640.0
-offset_right = 192.0
-offset_bottom = 704.0
+offset_left = 64.0
+offset_top = 128.0
+offset_right = 256.0
+offset_bottom = 192.0
 text = "Turns Left: "
 label_settings = SubResource("LabelSettings_dpfje")
 horizontal_alignment = 1
@@ -122,13 +109,10 @@ script = ExtResource("4_81og0")
 [connection signal="focus_entered" from="turn_counter" to="StellarEdge_Equities/TitanForge_Investments/high_stock" method="_on_turn_counter_focus_entered"]
 [connection signal="pressed" from="Quantum_Ventures_Inc_/lowrisk_stock" to="." method="_on_lowrisk_stock_pressed"]
 [connection signal="pressed" from="Quantum_Ventures_Inc_/lowrisk_stock" to="money_counter" method="_on_lowrisk_stock_pressed"]
-[connection signal="pressed" from="Quantum_Ventures_Inc_/lowrisk_stock" to="money_counter/profit" method="_on_lowrisk_stock_pressed"]
 [connection signal="pressed" from="Quantum_Ventures_Inc_/lowrisk_stock" to="turn_counter" method="_on_lowrisk_stock_pressed"]
 [connection signal="pressed" from="StellarEdge_Equities/medium_stock" to="." method="_on_lowrisk_stock_pressed"]
 [connection signal="pressed" from="StellarEdge_Equities/medium_stock" to="money_counter" method="_on_medium_stock_pressed"]
-[connection signal="pressed" from="StellarEdge_Equities/medium_stock" to="money_counter/profit" method="_on_medium_stock_pressed"]
 [connection signal="pressed" from="StellarEdge_Equities/medium_stock" to="turn_counter" method="_on_medium_stock_pressed"]
 [connection signal="pressed" from="StellarEdge_Equities/TitanForge_Investments/high_stock" to="." method="_on_lowrisk_stock_pressed"]
 [connection signal="pressed" from="StellarEdge_Equities/TitanForge_Investments/high_stock" to="money_counter" method="_on_high_stock_pressed"]
-[connection signal="pressed" from="StellarEdge_Equities/TitanForge_Investments/high_stock" to="money_counter/profit" method="_on_high_stock_pressed"]
 [connection signal="pressed" from="StellarEdge_Equities/TitanForge_Investments/high_stock" to="turn_counter" method="_on_high_stock_pressed"]
