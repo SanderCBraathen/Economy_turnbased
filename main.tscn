@@ -13,6 +13,7 @@ font_size = 100
 
 [sub_resource type="LabelSettings" id="LabelSettings_dpfje"]
 line_spacing = 25.0
+font_size = 20
 outline_size = 2
 shadow_color = Color(0, 0, 0, 0.439216)
 shadow_offset = Vector2(1, 2)
@@ -47,9 +48,9 @@ script = ExtResource("3_llb0h")
 
 [node name="turn_counter" type="Label" parent="."]
 self_modulate = Color(0.0117647, 0.627451, 0.984314, 1)
-offset_top = 640.0
+offset_top = 768.0
 offset_right = 192.0
-offset_bottom = 704.0
+offset_bottom = 832.0
 text = "Turns Left: "
 label_settings = SubResource("LabelSettings_dpfje")
 horizontal_alignment = 1
@@ -62,7 +63,9 @@ offset_top = 64.0
 offset_right = 1857.0
 offset_bottom = 160.0
 text = "Quantum Ventures Inc.
-Success rate: 90%"
+Growth potential: low
+Success rate: 90%
+"
 label_settings = SubResource("LabelSettings_qdsca")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -82,7 +85,9 @@ offset_top = 256.0
 offset_right = 1857.0
 offset_bottom = 352.0
 text = "StellarEdge Equities
-Success rate: 50%"
+Growth potential: Medium
+Success rate: 50%
+"
 label_settings = SubResource("LabelSettings_qdsca")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -102,7 +107,9 @@ offset_top = 192.0
 offset_right = 257.0
 offset_bottom = 288.0
 text = "TitanForge Investments
-Success rate: 10%"
+Growth potential: Very high
+Success rate: 5%
+"
 label_settings = SubResource("LabelSettings_qdsca")
 horizontal_alignment = 1
 vertical_alignment = 1

@@ -1,6 +1,6 @@
 extends Label
 
-var turn_amount = 100
+var turn_amount = 25
 
 func _ready():
 	pass
