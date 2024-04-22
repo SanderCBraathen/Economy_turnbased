@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dr4klcaqlnimh"]
+[gd_scene load_steps=11 format=3 uid="uid://dr4klcaqlnimh"]
 
 [ext_resource type="Script" path="res://cats_stock.gd" id="1_1m8er"]
 [ext_resource type="Script" path="res://money_counter.gd" id="1_2ngtt"]
@@ -20,6 +20,10 @@ shadow_offset = Vector2(1, 2)
 
 [sub_resource type="LabelSettings" id="LabelSettings_qdsca"]
 outline_size = 2
+
+[sub_resource type="LabelSettings" id="LabelSettings_oam6y"]
+font_size = 40
+font_color = Color(1, 0, 0.164706, 1)
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_1m8er")
@@ -101,11 +105,11 @@ offset_bottom = 127.0
 text = "Buy: 500$"
 script = ExtResource("4_81og0")
 
-[node name="TitanForge_Investments" type="Label" parent="StellarEdge_Equities"]
-layout_mode = 0
-offset_top = 192.0
-offset_right = 257.0
-offset_bottom = 288.0
+[node name="TitanForge_Investments" type="Label" parent="."]
+offset_left = 1600.0
+offset_top = 448.0
+offset_right = 1857.0
+offset_bottom = 544.0
 text = "TitanForge Investments
 Growth potential: Very high
 Success rate: 5%
@@ -115,7 +119,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="high_stock" type="Button" parent="StellarEdge_Equities/TitanForge_Investments"]
+[node name="high_stock" type="Button" parent="TitanForge_Investments"]
 layout_mode = 0
 offset_top = 96.0
 offset_right = 256.0
@@ -123,10 +127,40 @@ offset_bottom = 127.0
 text = "Buy: 1000$"
 script = ExtResource("4_81og0")
 
+[node name="Loan" type="Label" parent="."]
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 321.0
+offset_bottom = 160.0
+text = "Sandy bank
+"
+label_settings = SubResource("LabelSettings_qdsca")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Loan_buy" type="Button" parent="Loan" groups=["loan_buy"]]
+layout_mode = 0
+offset_top = 128.0
+offset_right = 256.0
+offset_bottom = 159.0
+text = "Take loan of 5000$"
+script = ExtResource("4_81og0")
+
+[node name="payback" type="Label" parent="Loan"]
+offset_top = 48.0
+offset_right = 257.0
+offset_bottom = 144.0
+label_settings = SubResource("LabelSettings_oam6y")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+script = ExtResource("1_2ngtt")
+
 [connection signal="focus_entered" from="turn_counter" to="money_counter" method="_on_turn_counter_focus_entered"]
 [connection signal="focus_entered" from="turn_counter" to="Quantum_Ventures_Inc_/lowrisk_stock" method="_on_turn_counter_focus_entered"]
 [connection signal="focus_entered" from="turn_counter" to="StellarEdge_Equities/medium_stock" method="_on_turn_counter_focus_entered"]
-[connection signal="focus_entered" from="turn_counter" to="StellarEdge_Equities/TitanForge_Investments/high_stock" method="_on_turn_counter_focus_entered"]
+[connection signal="focus_entered" from="turn_counter" to="TitanForge_Investments/high_stock" method="_on_turn_counter_focus_entered"]
 [connection signal="pressed" from="Quantum_Ventures_Inc_/lowrisk_stock" to="." method="_on_lowrisk_stock_pressed"]
 [connection signal="pressed" from="Quantum_Ventures_Inc_/lowrisk_stock" to="money_counter" method="_on_lowrisk_stock_pressed"]
 [connection signal="pressed" from="Quantum_Ventures_Inc_/lowrisk_stock" to="money_counter/profit" method="_on_lowrisk_stock_pressed"]
@@ -135,7 +169,9 @@ script = ExtResource("4_81og0")
 [connection signal="pressed" from="StellarEdge_Equities/medium_stock" to="money_counter" method="_on_medium_stock_pressed"]
 [connection signal="pressed" from="StellarEdge_Equities/medium_stock" to="money_counter/profit" method="_on_medium_stock_pressed"]
 [connection signal="pressed" from="StellarEdge_Equities/medium_stock" to="turn_counter" method="_on_medium_stock_pressed"]
-[connection signal="pressed" from="StellarEdge_Equities/TitanForge_Investments/high_stock" to="." method="_on_lowrisk_stock_pressed"]
-[connection signal="pressed" from="StellarEdge_Equities/TitanForge_Investments/high_stock" to="money_counter" method="_on_high_stock_pressed"]
-[connection signal="pressed" from="StellarEdge_Equities/TitanForge_Investments/high_stock" to="money_counter/profit" method="_on_high_stock_pressed"]
-[connection signal="pressed" from="StellarEdge_Equities/TitanForge_Investments/high_stock" to="turn_counter" method="_on_high_stock_pressed"]
+[connection signal="pressed" from="TitanForge_Investments/high_stock" to="." method="_on_lowrisk_stock_pressed"]
+[connection signal="pressed" from="TitanForge_Investments/high_stock" to="money_counter" method="_on_high_stock_pressed"]
+[connection signal="pressed" from="TitanForge_Investments/high_stock" to="money_counter/profit" method="_on_high_stock_pressed"]
+[connection signal="pressed" from="TitanForge_Investments/high_stock" to="turn_counter" method="_on_high_stock_pressed"]
+[connection signal="pressed" from="Loan/Loan_buy" to="money_counter" method="_on_loan_buy_pressed"]
+[connection signal="focus_entered" from="Loan/payback" to="money_counter" method="_on_payback_focus_entered"]
