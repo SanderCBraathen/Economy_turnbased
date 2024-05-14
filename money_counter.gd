@@ -15,14 +15,6 @@ func _process(delta):
 
 
 # This function is called when a certain UI element gains focus. It updates the text of that element to display the final money amount.
-func _on_turn_counter_focus_entered():
-	#if not money_moved:
-		#var new_position = self.position + Vector2(750, 450)
-		#self.position = new_position
-		#money_moved = true
-	
-	
-	self.text = "Final Amount: " + str(money_amount) + " "
 
 # Add a retry button!!
 
@@ -70,3 +62,7 @@ func _on_payback_focus_entered():
 	pass # Replace with function body.
 	
 
+
+
+func _on_turn_counter_out_of_turns():
+	self.text = "Final Amount: " + str(money_amount) + " "

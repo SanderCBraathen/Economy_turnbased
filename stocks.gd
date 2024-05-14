@@ -10,5 +10,5 @@ func _process(delta):
 
 
 
-func _on_turn_counter_focus_entered():
+func _on_turn_counter_out_of_turns():
 	self.hide()

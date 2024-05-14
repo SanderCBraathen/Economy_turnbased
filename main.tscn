@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://dr4klcaqlnimh"]
+[gd_scene load_steps=12 format=3 uid="uid://dr4klcaqlnimh"]
 
 [ext_resource type="Script" path="res://cats_stock.gd" id="1_1m8er"]
 [ext_resource type="Script" path="res://money_counter.gd" id="1_2ngtt"]
 [ext_resource type="Script" path="res://turn_counter.gd" id="3_ja5fa"]
 [ext_resource type="Script" path="res://profit.gd" id="3_llb0h"]
 [ext_resource type="Script" path="res://stocks.gd" id="4_81og0"]
+[ext_resource type="Script" path="res://payback.gd" id="6_xnl71"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_6ehf2"]
 font_size = 100
@@ -128,9 +129,9 @@ text = "Buy: 1000$"
 script = ExtResource("4_81og0")
 
 [node name="Loan" type="Label" parent="."]
-offset_left = 64.0
+offset_left = 184.0
 offset_top = 64.0
-offset_right = 321.0
+offset_right = 441.0
 offset_bottom = 160.0
 text = "Sandy bank
 "
@@ -148,19 +149,22 @@ text = "Take loan of 5000$"
 script = ExtResource("4_81og0")
 
 [node name="payback" type="Label" parent="Loan"]
+layout_mode = 0
+offset_left = -80.0
 offset_top = 48.0
-offset_right = 257.0
+offset_right = 328.0
 offset_bottom = 144.0
 label_settings = SubResource("LabelSettings_oam6y")
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
-script = ExtResource("1_2ngtt")
+script = ExtResource("6_xnl71")
 
-[connection signal="focus_entered" from="turn_counter" to="money_counter" method="_on_turn_counter_focus_entered"]
-[connection signal="focus_entered" from="turn_counter" to="Quantum_Ventures_Inc_/lowrisk_stock" method="_on_turn_counter_focus_entered"]
-[connection signal="focus_entered" from="turn_counter" to="StellarEdge_Equities/medium_stock" method="_on_turn_counter_focus_entered"]
-[connection signal="focus_entered" from="turn_counter" to="TitanForge_Investments/high_stock" method="_on_turn_counter_focus_entered"]
+[connection signal="loan_pay" from="turn_counter" to="Loan/payback" method="_on_turn_counter_loan_pay"]
+[connection signal="out_of_turns" from="turn_counter" to="money_counter" method="_on_turn_counter_out_of_turns"]
+[connection signal="out_of_turns" from="turn_counter" to="Quantum_Ventures_Inc_/lowrisk_stock" method="_on_turn_counter_out_of_turns"]
+[connection signal="out_of_turns" from="turn_counter" to="StellarEdge_Equities/medium_stock" method="_on_turn_counter_out_of_turns"]
+[connection signal="out_of_turns" from="turn_counter" to="TitanForge_Investments/high_stock" method="_on_turn_counter_out_of_turns"]
 [connection signal="pressed" from="Quantum_Ventures_Inc_/lowrisk_stock" to="." method="_on_lowrisk_stock_pressed"]
 [connection signal="pressed" from="Quantum_Ventures_Inc_/lowrisk_stock" to="money_counter" method="_on_lowrisk_stock_pressed"]
 [connection signal="pressed" from="Quantum_Ventures_Inc_/lowrisk_stock" to="money_counter/profit" method="_on_lowrisk_stock_pressed"]
@@ -174,4 +178,5 @@ script = ExtResource("1_2ngtt")
 [connection signal="pressed" from="TitanForge_Investments/high_stock" to="money_counter/profit" method="_on_high_stock_pressed"]
 [connection signal="pressed" from="TitanForge_Investments/high_stock" to="turn_counter" method="_on_high_stock_pressed"]
 [connection signal="pressed" from="Loan/Loan_buy" to="money_counter" method="_on_loan_buy_pressed"]
+[connection signal="pressed" from="Loan/Loan_buy" to="turn_counter" method="_on_loan_buy_pressed"]
 [connection signal="focus_entered" from="Loan/payback" to="money_counter" method="_on_payback_focus_entered"]

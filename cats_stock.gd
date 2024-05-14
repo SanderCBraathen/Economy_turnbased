@@ -19,3 +19,5 @@ func _on_lowrisk_stock_pressed():
 	var random_generator = RandomNumberGenerator.new()
 	var random_number = random_generator.randi_range(1, 2)
 
+# 1. fikse lån
+# 2. Penger over tid
